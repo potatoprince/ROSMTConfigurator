@@ -125,7 +125,8 @@ namespace MikrotikConfigurator
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            textBox1.ScrollBars = ScrollBars.Both;
+            textBox1.WordWrap = false;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
