@@ -1,6 +1,6 @@
 ﻿namespace MikrotikConfigurator
 {
-    partial class Form2
+    partial class FormCCR1036_12G_4S
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +68,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(146, 95);
             this.panel2.Name = "panel2";
@@ -97,16 +100,30 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(644, 344);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.WordWrap = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // FormCCR1036_12G_4S
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 442);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "FormCCR1036_12G_4S";
+            this.Text = "Traffic Generator";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -120,5 +137,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
