@@ -48,6 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -192,7 +194,9 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.textBox13);
             this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -248,6 +252,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(16, 145);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 11;
+            this.textBox3.Text = "sfp2 MAC-DST";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(16, 102);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 10;
+            this.textBox13.Text = "sfp1 MAC-DST";
+            // 
             // FormCCR1036_12G_4S
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +310,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox13;
     }
 }

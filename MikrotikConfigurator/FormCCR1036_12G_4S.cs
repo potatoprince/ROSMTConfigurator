@@ -21,7 +21,7 @@ namespace MikrotikConfigurator
             _chosenStend = chosenStend;
 
             textBox1.ScrollBars = ScrollBars.Both;
-            textBox1.WordWrap = false;
+            textBox1.WordWrap = true;
             textBox1.ReadOnly = true;
 
             hideMacTextbox();
@@ -35,11 +35,13 @@ namespace MikrotikConfigurator
             comboBox1.SelectedIndex = 0;
 
             setTextboxFocus();
+            checkBoardCount();
              
         }
         private void setTextboxFocus()
         {
             textBox2.GotFocus += textBox2_GotFocus;
+            textBox3.GotFocus += textBox3_GotFocus;
             textBox4.GotFocus += textBox4_GotFocus;
             textBox5.GotFocus += textBox5_GotFocus;
             textBox6.GotFocus += textBox6_GotFocus;
@@ -49,47 +51,68 @@ namespace MikrotikConfigurator
             textBox10.GotFocus += textBox10_GotFocus;
             textBox11.GotFocus += textBox11_GotFocus;
             textBox12.GotFocus += textBox12_GotFocus;
-
+            textBox13.GotFocus += textBox13_GotFocus;
         }
         private void textBox2_GotFocus (object sender, EventArgs e)
+
         {
+            if (textBox2.Text.Contains("MAC-DST"))
             textBox2.Clear();
+        }
+        private void textBox3_GotFocus(object sender, EventArgs e)
+        {
+            if (textBox3.Text.Contains("MAC-DST"))
+                textBox3.Clear();
         }
         private void textBox4_GotFocus(object sender, EventArgs e)
         {
-            textBox4.Clear();
+            if (textBox4.Text.Contains("MAC-DST"))
+                textBox4.Clear();
         }
         private void textBox5_GotFocus(object sender, EventArgs e)
         {
-            textBox5.Clear();
+            if (textBox5.Text.Contains("MAC-DST"))
+                textBox5.Clear();
         }
         private void textBox6_GotFocus(object sender, EventArgs e)
         {
-            textBox6.Clear();
+            if (textBox6.Text.Contains("MAC-DST"))
+                textBox6.Clear();
         }
         private void textBox7_GotFocus(object sender, EventArgs e)
         {
-            textBox7.Clear();
+            if (textBox7.Text.Contains("MAC-DST"))
+                textBox7.Clear();
         }
         private void textBox8_GotFocus(object sender, EventArgs e)
         {
-            textBox8.Clear();
+            if (textBox8.Text.Contains("MAC-DST"))
+                textBox8.Clear();
         }
         private void textBox9_GotFocus(object sender, EventArgs e)
         {
-            textBox9.Clear();
+            if (textBox9.Text.Contains("MAC-DST"))
+                textBox9.Clear();
         }
         private void textBox10_GotFocus(object sender, EventArgs e)
         {
-            textBox10.Clear();
+            if (textBox10.Text.Contains("MAC-DST"))
+                textBox10.Clear();
         }
         private void textBox11_GotFocus(object sender, EventArgs e)
         {
-            textBox11.Clear();
+            if (textBox11.Text.Contains("MAC-DST"))
+                textBox11.Clear();
         }
         private void textBox12_GotFocus(object sender, EventArgs e)
         {
-            textBox12.Clear();
+            if (textBox12.Text.Contains("MAC-DST"))
+                textBox12.Clear();
+        }
+        private void textBox13_GotFocus(object sender, EventArgs e)
+        {
+            if (textBox13.Text.Contains("MAC-DST"))
+                textBox13.Clear();
         }
 
         public void showVar() { MessageBox.Show(_chosenStend); }
@@ -114,10 +137,130 @@ namespace MikrotikConfigurator
         }
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            var nl = Environment.NewLine;
             set_stendIP(_chosenStend);
-            textBox1.Text += tgIP.ToString(); 
+            textBox1.Text = "";
+            string textPacketTemplate = "";
+            string textStream = "";
 
+            string trafficGenerator = "";
+            if (boardCount == 1 || boardCount <= 5)
+            {
+                trafficGenerator = "/tool traffic-generator packet-template" + nl + "add interface=ether1 ip-dst=172.22." + tgIP + ".21" +
+                   " mac-dst=" + textBox2.Text + " name=e1e2 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl+
+                   "add interface=ether2 ip-dst=172.21."+tgIP+".21 mac-dst="+textBox4.Text+" name=e2e1"+
+                   " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl;
+                textBox1.Text = trafficGenerator;
+            }
+            if (boardCount == 2 || boardCount > 2)
+            {
+                trafficGenerator = "add interface=ether3 ip-dst=172.24." + tgIP + ".21 mac-dst="+textBox6.Text+" name=e3e4" +
+                    "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl+"add interface=ether4 ip-dst=172.23." +tgIP+" .21 "+
+                    "mac-dst=" + textBox5.Text + " name=e4e3 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl;
+
+                textBox1.Text += trafficGenerator;
+            }
+            if (boardCount == 3 || boardCount > 3  )
+            {
+                trafficGenerator = "add interface=ether5 ip-dst=172.26." + tgIP + ".21 mac-dst=" + textBox8.Text + " name=e5e6" +
+                    " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether6" +
+                    " ip-dst=172.25." + tgIP + ".21 mac-dst=" + textBox7.Text + " name=e6e5 " +
+                    "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount == 4 || boardCount > 4)
+            {
+                trafficGenerator = "add interface=ether7 ip-dst=172.28." + tgIP + ".21 mac-dst=" + textBox10.Text + " name=e7e8" +
+                    " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether8" +
+                    " ip-dst=172.27." + tgIP + ".21 mac-dst=" + textBox9.Text + " name=e8e7 " +
+                    "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount == 5 )
+            {
+                trafficGenerator = "add interface=ether9 ip-dst=172.29." + tgIP + ".21 mac-dst=" + textBox10.Text + " name=e9e10" +
+                    " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether10" +
+                    " ip-dst=172.30." + tgIP + ".21 mac-dst=" + textBox9.Text + " name=e10e9 " +
+                    "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount > 1)
+            {
+                trafficGenerator = "add interface=sfp1 ip-dst=172.22." + tgIP + ".102 mac-dst=" + textBox13.Text + " name=sfp1" +
+                   " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=sfp2" +
+                   " ip-dst=172.21." + tgIP + ".102 mac-dst=" + textBox3.Text + " name=sfp2 " +
+                   "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+                textPacketTemplate = textBox1.Text;
+            }
+
+            // MAKE TRAFFIC-GENERATOR STREAM
+
+            if (boardCount == 1 || boardCount <= 5)
+            {
+                trafficGenerator = "/tool traffic-generator stream"+nl+
+                    "add id=0 mbps=950 name=e1e2 packet-size=512 tx-template=e1e2"+nl+
+                    "add id=1 mbps=950 name=e2e1 packet-size=512 tx-template=e2e1"+nl;
+                textBox1.Text = trafficGenerator;
+            }
+            if (boardCount == 2 || boardCount > 2)
+            {
+                trafficGenerator = 
+                    "add id=2 mbps=950 name=e3e4 packet-size=512 tx-template=e3e4" + nl +
+                    "add id=3 mbps=950 name=e4e3 packet-size=512 tx-template=e4e3" + nl;
+
+                textBox1.Text += trafficGenerator;
+            }
+            if (boardCount == 3 || boardCount > 3)
+            {
+                trafficGenerator =
+                    "add id=4 mbps=950 name=e5e6 packet-size=512 tx-template=e5e6" + nl +
+                    "add id=5 mbps=950 name=e6e5 packet-size=512 tx-template=e6e5" + nl;
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount == 4 || boardCount > 4)
+            {
+                trafficGenerator =
+                    "add id=6 mbps=950 name=e7e8 packet-size=512 tx-template=e7e8" + nl +
+                    "add id=7 mbps=950 name=e8e7 packet-size=512 tx-template=e8e7" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount == 5)
+            {
+                trafficGenerator =
+                   "add id=8 mbps=950 name=e9e10 packet-size=512 tx-template=e9e10" + nl +
+                   "add id=9 mbps=950 name=e9e10 packet-size=512 tx-template=e10e9" + nl;
+
+
+                textBox1.Text += trafficGenerator;
+
+            }
+            if (boardCount > 1)
+            {
+                trafficGenerator =
+                      "add id=10 mbps=950 name=sfp1 packet-size=512 tx-template=sfp1" + nl +
+                      "add id=11 mbps=950 name=sfp2 packet-size=512 tx-template=sfp2" + nl;
+
+                textBox1.Text += trafficGenerator;
+                textStream = textBox1.Text;
+            }
+            textBox1.Text = textPacketTemplate + textStream;
 
         }
 
@@ -129,6 +272,7 @@ namespace MikrotikConfigurator
         {
             
             textBox2.Visible = false;
+            textBox3.Visible = false;
             textBox4.Visible = false;
             textBox5.Visible = false;
             textBox6.Visible = false;
@@ -138,10 +282,12 @@ namespace MikrotikConfigurator
             textBox10.Visible = false;
             textBox11.Visible = false;
             textBox12.Visible = false;
+            textBox13.Visible = false;
         }
         private void showMacTextbox()
         {
             textBox2.Visible = true;
+            textBox3.Visible = true;
             textBox4.Visible = true;
             textBox5.Visible = true;
             textBox6.Visible = true;
@@ -151,29 +297,67 @@ namespace MikrotikConfigurator
             textBox10.Visible = true;
             textBox11.Visible = true;
             textBox12.Visible = true;
+            textBox13.Visible = true;
         }
 
+        int boardCount = 1;
+        private void checkBoardCount()
+        {
+            if (comboBox1.SelectedItem.ToString().Contains("1"))
+            {
+                boardCount = 1;
+
+            }
+            if (comboBox1.SelectedItem.ToString().Contains("2"))
+            {
+                boardCount = 2;
+
+            }
+            if (comboBox1.SelectedItem.ToString().Contains("3"))
+            {
+                boardCount = 3;
+
+            }
+            if (comboBox1.SelectedItem.ToString().Contains("4"))
+            {
+                boardCount = 4;
+
+            }
+
+            if (comboBox1.SelectedItem.ToString().Contains("5"))
+            {
+                boardCount = 5;
+
+            }
+            
+        }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
 
             hideMacTextbox();
+            checkBoardCount();
+            if (boardCount >=1)
+            {
+                textBox3.Visible = true;
+                textBox13.Visible = true;
+            }
 
-            if (comboBox1.SelectedItem.ToString().Equals("1"))
+            if (boardCount == 1)
             {
                 textBox2.Visible = true;
                 textBox4.Visible = true;
             }
 
-            if (comboBox1.SelectedItem.ToString().Equals("2")) 
+            if (boardCount == 2) 
             {
                 textBox2.Visible = true;
                 textBox4.Visible = true;
                 textBox5.Visible = true;
                 textBox6.Visible = true;
             }
-            if (comboBox1.SelectedItem.ToString().Equals("3"))
+            if (boardCount == 3)
             {
                 textBox2.Visible = true;
                 textBox4.Visible = true;
@@ -183,7 +367,7 @@ namespace MikrotikConfigurator
                 textBox8.Visible = true;
 
             }
-            if (comboBox1.SelectedItem.ToString().Equals("4"))
+            if (boardCount == 4)
             {
                 textBox2.Visible = true;
                 textBox4.Visible = true;
@@ -194,7 +378,7 @@ namespace MikrotikConfigurator
                 textBox9.Visible = true;
                 textBox10.Visible = true;
             }
-            if (comboBox1.SelectedItem.ToString().Equals("5"))
+            if (boardCount == 5)
             {
                 showMacTextbox();
 
