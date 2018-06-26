@@ -15,15 +15,6 @@ namespace MikrotikConfigurator
         string availableRouters = "";
        public string chosenStend = "";
 
-       enum stendIP {
-        Termo_Ch_01_UP = 111 ,Termo_Ch_01_DOWN = 112,Termo_Ch_02_UP = 114 ,Termo_Ch_02_DOWN = 115,
-        Termo_Ch_03_UP = 116,Termo_Ch_03_DOWN = 117,/*Termo_Ch_04_UP,Termo_Ch_04_DOWN,*/Termo_Ch_05 = 113,Termo_Ch_06 = 130,
-        Termo_N1_UP = 118,Termo_N1_MIDDLE = 119,Termo_N1_DOWN = 120,Termo_N2_UP = 121,Termo_N2_MIDDLE = 122,Termo_N2_DOWN = 123,
-        Termo_N3_UP = 124,Termo_N3_MIDDLE = 125,Termo_N3_DOWN = 125 , Termo_N3_SFPplus = 126,Termo_N4_UP = 127,Termo_N4_DOWN = 128,
-        t24h_n0_left = 21,t24h_n0_right = 22,t24h_n1_left = 11,t24h_n1_right = 12,t24h_n2_left = 13,t24h_n2_right = 14,
-        t24h_n3_up = 15,t24h_n3_middle = 16,t24h_n3_down = 17,t24h_n4_up = 18, t24h_n4_middle = 19,t24h_n4_down = 20
-
-        };
 
 
 
@@ -34,11 +25,7 @@ namespace MikrotikConfigurator
             string[] _division = new string[] { "Endurance", "RMA" };
             comboBox1.DataSource = _division;
             comboBox1.SelectedIndex = 0;
-            
-            string enumTest = ((stendIP)11).ToString();
-            textBox1.Text = enumTest;
-            
-            
+
 
         }
 
@@ -154,11 +141,7 @@ namespace MikrotikConfigurator
  
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+ 
          
       
 
