@@ -28,6 +28,16 @@ namespace MikrotikConfigurator
 
 
         }
+        private void hasTrafficGenerator() 
+
+        {
+            string selectedRouter = listBox1.SelectedItem.ToString();
+            if (selectedRouter == "CCR1036-12G-4S" || selectedRouter == "Audience")
+            {
+                button2.Enabled = true;
+            }
+            else button2.Enabled = false;
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -101,7 +111,7 @@ namespace MikrotikConfigurator
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
             var nl = Environment.NewLine;
 
             string alwaysWrite = "/system clock " +nl+"set time-zone-name=Europe/Riga " + nl +
@@ -156,6 +166,18 @@ namespace MikrotikConfigurator
                 formR.ShowDialog();
                 
             }
+
+            if (listBox1.SelectedItem.ToString().Equals("Audience"))
+            {
+                var formR = new FormAUDIENCE(chosenStend);
+                formR.ShowDialog();
+
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hasTrafficGenerator();
         }
     }
 }

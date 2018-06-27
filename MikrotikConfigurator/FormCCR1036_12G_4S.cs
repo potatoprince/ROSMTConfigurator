@@ -35,9 +35,26 @@ namespace MikrotikConfigurator
             comboBox1.SelectedIndex = 0;
 
             setTextboxFocus();
+            setTextboxMaxLength();
             checkBoardCount();
              
         }
+        private void setTextboxMaxLength()
+        {
+            textBox2.MaxLength= 17;
+            textBox3.MaxLength = 17;
+            textBox4.MaxLength = 17;
+            textBox5.MaxLength = 17;
+            textBox6.MaxLength = 17;
+            textBox7.MaxLength = 17;
+            textBox8.MaxLength = 17;
+            textBox9.MaxLength = 17;
+            textBox10.MaxLength = 17;
+            textBox11.MaxLength = 17;
+            textBox12.MaxLength = 17;
+            textBox13.MaxLength = 17;
+        }
+       
         private void setTextboxFocus()
         {
             textBox2.GotFocus += textBox2_GotFocus;
@@ -137,6 +154,8 @@ namespace MikrotikConfigurator
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            
             var nl = Environment.NewLine;
             set_stendIP(_chosenStend);
             textBox1.Text = "";
@@ -144,27 +163,28 @@ namespace MikrotikConfigurator
             string textStream = "";
 
             string trafficGenerator = "";
-            if (boardCount == 1 || boardCount <= 5)
+            if (boardCount > 0 || boardCount <= 5)
             {
                 trafficGenerator = "/tool traffic-generator packet-template" + nl + "add interface=ether1 ip-dst=172.22." + tgIP + ".21" +
-                   " mac-dst=" + textBox2.Text + " name=e1e2 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl+
-                   "add interface=ether2 ip-dst=172.21."+tgIP+".21 mac-dst="+textBox4.Text+" name=e2e1"+
+                   " mac-dst=" + textBox2.Text.ToString() + " name=e1e2 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl+
+                   "add interface=ether2 ip-dst=172.21."+tgIP+".21 mac-dst="+textBox4.Text.ToString() + " name=e2e1"+
                    " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl;
                 textBox1.Text = trafficGenerator;
+                
             }
             if (boardCount == 2 || boardCount > 2)
             {
-                trafficGenerator = "add interface=ether3 ip-dst=172.24." + tgIP + ".21 mac-dst="+textBox6.Text+" name=e3e4" +
+                trafficGenerator = "add interface=ether3 ip-dst=172.24." + tgIP + ".21 mac-dst="+textBox6.Text.ToString() + " name=e3e4" +
                     "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl+"add interface=ether4 ip-dst=172.23." +tgIP+" .21 "+
-                    "mac-dst=" + textBox5.Text + " name=e4e3 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl;
+                    "mac-dst=" + textBox5.Text.ToString() + " name=e4e3 random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001"+nl;
 
                 textBox1.Text += trafficGenerator;
             }
             if (boardCount == 3 || boardCount > 3  )
             {
-                trafficGenerator = "add interface=ether5 ip-dst=172.26." + tgIP + ".21 mac-dst=" + textBox8.Text + " name=e5e6" +
+                trafficGenerator = "add interface=ether5 ip-dst=172.26." + tgIP + ".21 mac-dst=" + textBox8.Text.ToString() + " name=e5e6" +
                     " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether6" +
-                    " ip-dst=172.25." + tgIP + ".21 mac-dst=" + textBox7.Text + " name=e6e5 " +
+                    " ip-dst=172.25." + tgIP + ".21 mac-dst=" + textBox7.Text.ToString() + " name=e6e5 " +
                     "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
 
 
@@ -173,9 +193,9 @@ namespace MikrotikConfigurator
             }
             if (boardCount == 4 || boardCount > 4)
             {
-                trafficGenerator = "add interface=ether7 ip-dst=172.28." + tgIP + ".21 mac-dst=" + textBox10.Text + " name=e7e8" +
+                trafficGenerator = "add interface=ether7 ip-dst=172.28." + tgIP + ".21 mac-dst=" + textBox10.Text.ToString() + " name=e7e8" +
                     " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether8" +
-                    " ip-dst=172.27." + tgIP + ".21 mac-dst=" + textBox9.Text + " name=e8e7 " +
+                    " ip-dst=172.27." + tgIP + ".21 mac-dst=" + textBox9.Text.ToString() + " name=e8e7 " +
                     "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
 
 
@@ -184,20 +204,20 @@ namespace MikrotikConfigurator
             }
             if (boardCount == 5 )
             {
-                trafficGenerator = "add interface=ether9 ip-dst=172.29." + tgIP + ".21 mac-dst=" + textBox10.Text + " name=e9e10" +
+                trafficGenerator = "add interface=ether9 ip-dst=172.29." + tgIP + ".21 mac-dst=" + textBox10.Text.ToString() + " name=e9e10" +
                     " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=ether10" +
-                    " ip-dst=172.30." + tgIP + ".21 mac-dst=" + textBox9.Text + " name=e10e9 " +
+                    " ip-dst=172.30." + tgIP + ".21 mac-dst=" + textBox9.Text.ToString() + " name=e10e9 " +
                     "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
 
 
                 textBox1.Text += trafficGenerator;
 
             }
-            if (boardCount > 1)
+            if (boardCount > 0)
             {
-                trafficGenerator = "add interface=sfp1 ip-dst=172.22." + tgIP + ".102 mac-dst=" + textBox13.Text + " name=sfp1" +
+                trafficGenerator = "add interface=sfp1 ip-dst=172.22." + tgIP + ".102 mac-dst=" + textBox13.Text.ToString() + " name=sfp1" +
                    " random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl + "add interface=sfp2" +
-                   " ip-dst=172.21." + tgIP + ".102 mac-dst=" + textBox3.Text + " name=sfp2 " +
+                   " ip-dst=172.21." + tgIP + ".102 mac-dst=" + textBox3.Text.ToString() + " name=sfp2 " +
                    "random-ranges=29:8:1-21,34:16:60000-60001,36:16:50000-50001" + nl;
 
 
@@ -251,7 +271,7 @@ namespace MikrotikConfigurator
                 textBox1.Text += trafficGenerator;
 
             }
-            if (boardCount > 1)
+            if (boardCount > 0)
             {
                 trafficGenerator =
                       "add id=10 mbps=950 name=sfp1 packet-size=512 tx-template=sfp1" + nl +
@@ -384,7 +404,6 @@ namespace MikrotikConfigurator
 
             }
         }
-
 
     }
 }

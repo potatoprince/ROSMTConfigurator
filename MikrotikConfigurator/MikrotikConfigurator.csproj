@@ -51,6 +51,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAUDIENCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAUDIENCE.Designer.cs">
+      <DependentUpon>FormAUDIENCE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCCR1036_12G_4S.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAUDIENCE.resx">
+      <DependentUpon>FormAUDIENCE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCCR1036_12G_4S.resx">
       <DependentUpon>FormCCR1036_12G_4S.cs</DependentUpon>
