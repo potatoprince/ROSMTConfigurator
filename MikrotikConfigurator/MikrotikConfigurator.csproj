@@ -51,16 +51,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAUDIENCE.cs">
+    <Compile Include="Router Forms\FormAUDIENCE.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAUDIENCE.Designer.cs">
+    <Compile Include="Router Forms\FormAUDIENCE.Designer.cs">
       <DependentUpon>FormAUDIENCE.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCCR1036_12G_4S.cs">
+    <Compile Include="Router Forms\FormCCR1036_12G_4S.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCCR1036_12G_4S.Designer.cs">
+    <Compile Include="Router Forms\FormCCR1036_12G_4S.Designer.cs">
       <DependentUpon>FormCCR1036_12G_4S.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDIY.cs">
@@ -74,10 +74,10 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAUDIENCE.resx">
+    <EmbeddedResource Include="Router Forms\FormAUDIENCE.resx">
       <DependentUpon>FormAUDIENCE.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCCR1036_12G_4S.resx">
+    <EmbeddedResource Include="Router Forms\FormCCR1036_12G_4S.resx">
       <DependentUpon>FormCCR1036_12G_4S.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDIY.resx">
