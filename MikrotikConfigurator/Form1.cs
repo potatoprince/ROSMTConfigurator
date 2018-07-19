@@ -64,7 +64,6 @@ namespace MikrotikConfigurator
 
             if (comboBox1.SelectedItem.ToString().Equals("Endurance"))
             {
-                _routersEndurance.Add("Audience");
                 _routersEndurance.Add("CCR1036-12G-4S");
                 _routersEndurance.Add("CRS305-1G-4S+");
                 _routersEndurance.Add("hAPac^2");
